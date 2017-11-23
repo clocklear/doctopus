@@ -14,6 +14,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { ScanModule } from './scan/scan.module';
+import { FindModule } from './find/find.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -27,7 +30,10 @@ import { AppComponent } from './app.component';
 		MatButtonModule,
 		MatIconModule,
 		MatSidenavModule,
-		MatListModule
+		MatListModule,
+
+		ScanModule,
+		FindModule
   ],
   providers: [],
   bootstrap: [AppComponent]
