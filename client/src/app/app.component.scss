@@ -1,5 +1,27 @@
 :host {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+
 	.fill-space {
 		flex: 1 1 auto;
+	}
+
+	.app-sidenav-container {
+		flex: 1;
+	}
+
+	.app-sidenav {
+		width: 200px;
+		padding: 10px;
+	}
+
+	mat-list-item {
+		cursor: pointer;
+
+		mat-icon {
+			margin-right: 10px;
+		}
 	}
 }
