@@ -14,16 +14,17 @@ var app = express();
 
 // Initialize session & passport auth
 auth.init(app)
-var redisCfg = config.get("redis");
-var redisStore = new RedisStore({
-  url: redisCfg.url
-});
-app.use(session({
-  store: redisStore,
-  secret: redisCfg.secret,
+var sessConfig = {
+  secret: config.get("session").secret,
   resave: false,
   saveUninitialized: false
-}))
+};
+if (process.env.NODE_ENV != 'test') {
+  sessConfig.store = new RedisStore({
+    url: config.get("redis").url
+  });
+}
+app.use(session(sessConfig))
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -56,15 +57,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({"err": "not found"});
 });
-
-// Add a custom shutdown function for wrapping any processes
-// that we may need to -- connect-redis was preventing
-// my test shutdowns, so this gives me an easy way to 
-// expose a cleanup func
-app.shutdown = function (cb) {
-  cb = cb || function () {};
-  redisStore.client.quit();
-  cb();
-}
 
 module.exports = app;

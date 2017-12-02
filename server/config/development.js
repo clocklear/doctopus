@@ -1,6 +1,8 @@
 module.exports = {
-  "redis": {
-    "url": "redis://localhost",
+  "session": {
     "secret": "SuperDevelopmentSecret!"
+  },
+  "redis": {
+    "url": "redis://localhost"
   }
 };

@@ -1,6 +1,8 @@
 module.exports = {
+  "session": {
+    "secret": process.env.SESSION_SECRET
+  },
   "redis": {
-    "url": process.env.REDIS_STORE_URI,
-    "secret": process.env.REDIS_STORE_SECRET
+    "url": process.env.REDIS_STORE_URI
   }
 };

@@ -16,7 +16,6 @@ describe('Dummy', function() {
     });
 
     after(function (done) {
-      app.shutdown();
       server.close(done);
     });
 
