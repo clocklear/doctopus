@@ -1,4 +1,4 @@
-var DiskAdapter = require("sails-disk");
+const DiskAdapter = require("sails-disk");
 
 module.exports = {
   session: {

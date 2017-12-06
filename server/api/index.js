@@ -1,6 +1,6 @@
-var express = require('express');
-var path = require('path');
-var router = express.Router();
+const express = require('express');
+const path = require('path');
+const router = express.Router();
 
 /** Set up API endpoints */
 router.use('/document', require(path.join(__dirname, 'document')))
