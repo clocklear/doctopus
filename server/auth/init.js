@@ -3,28 +3,17 @@ var bcrypt = require('bcrypt')
 var LocalStrategy = require('passport-local').Strategy
 
 var authenticationMiddleware = require('./middleware')
-
-// Generate Password
-var saltRounds = 10
-var myPlaintextPassword = 'my-password'
-var salt = bcrypt.genSaltSync(saltRounds)
-var passwordHash = bcrypt.hashSync(myPlaintextPassword, salt)
-
-var user = {
-  username: 'test-user',
-  passwordHash,
-  id: 1
-}
+var path = require('path');
+var orm = require(path.join('..', 'models'));
 
 function findUser (username, callback) {
-  if (username === user.username) {
-    return callback(null, user)
-  }
-  return callback(null)
+  orm.models.user.findOne({userName: username}).exec(function (err, user) {
+    return callback(err, user);
+  });
 }
 
 passport.serializeUser(function (user, cb) {
-  cb(null, user.username)
+  cb(null, user.userName)
 })
 
 passport.deserializeUser(function (username, cb) {
@@ -41,12 +30,11 @@ function initPassport () {
 
         // User not found
         if (!user) {
-          console.log('User not found')
           return done(null, false)
         }
 
         // Always use hashed passwords and fixed time comparison
-        bcrypt.compare(password, user.passwordHash, (err, isValid) => {
+        bcrypt.compare(password, user.passHash, (err, isValid) => {
           if (err) {
             return done(err)
           }

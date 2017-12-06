@@ -1,13 +1,18 @@
 module.exports = function(Waterline) {
   return Waterline.Collection.extend({
     connection: "default",
-    identity: "provider",
-    primaryKey: "providerId",
+    identity: "user",
+    primaryKey: "userId",
     attributes: {
-      name: {
+      userName: {
         type: "string",
         required: true,
-        unique: true
+        unique: true,
+        index: true
+      },
+      passHash: {
+        type: "string",
+        required: true
       }
     }
   });

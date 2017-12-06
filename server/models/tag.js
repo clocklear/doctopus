@@ -1,23 +1,18 @@
-var uuid = require('uuid');
-
-module.exports = {
-  attributes: {
-    tagId: {
-      type: 'string',
-      primaryKey: true,
-      required: true,
-      defaultsTo: function() {
-        return uuid.v4()
+module.exports = function(Waterline) {
+  return Waterline.Collection.extend({
+    connection: "default",
+    identity: "tag",
+    primaryKey: "tagId",
+    attributes: {
+      tagName: {
+        type: "string",
+        required: true,
+        unique: true
+      },
+      documents: {
+        collection: "document",
+        via: "tags"
       }
-    },
-    tagName: {
-      type: 'string',
-      required: true,
-      unique: true
-    },
-    documents: {
-      collection: 'document',
-      via: 'tags'
     }
-  }
-}
+  });
+};

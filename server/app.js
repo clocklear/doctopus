@@ -58,4 +58,7 @@ app.use(function(err, req, res, next) {
   res.json({"err": "not found"});
 });
 
+// Init ORM
+var orm = require(path.join(__dirname, 'models'));
+
 module.exports = app;
