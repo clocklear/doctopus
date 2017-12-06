@@ -1,5 +1,5 @@
 function authenticationMiddleware () {
-  return function (req, res, next) {
+  return (req, res, next) => {
     if (req.isAuthenticated()) {
       return next();
     }
@@ -7,7 +7,7 @@ function authenticationMiddleware () {
     res.json({
       "err": "unauthorized"
     });
-  }
+  };
 }
 
 module.exports = authenticationMiddleware

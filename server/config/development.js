@@ -1,5 +1,5 @@
-var path = require("path");
-var DiskAdapter = require("sails-disk");
+const path = require("path");
+const DiskAdapter = require("sails-disk");
 
 module.exports = {
   session: {

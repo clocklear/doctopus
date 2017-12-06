@@ -1,22 +1,20 @@
-var passport = require('passport')
-var bcrypt = require('bcrypt')
-var LocalStrategy = require('passport-local').Strategy
+const passport = require('passport');
+const bcrypt = require('bcrypt');
+const LocalStrategy = require('passport-local').Strategy;
 
-var authenticationMiddleware = require('./middleware')
-var path = require('path');
-var orm = require(path.join('..', 'models'));
+const authenticationMiddleware = require('./middleware');
+const path = require('path');
+const orm = require(path.join('..', 'models'));
 
 function findUser (username, callback) {
-  orm.models.user.findOne({userName: username}).exec(function (err, user) {
-    return callback(err, user);
-  });
+  orm.models.user.findOne({userName: username}).exec((err, user) => callback(err, user));
 }
 
-passport.serializeUser(function (user, cb) {
+passport.serializeUser((user, cb) => {
   cb(null, user.userName)
 })
 
-passport.deserializeUser(function (username, cb) {
+passport.deserializeUser((username, cb) => {
   findUser(username, cb)
 })
 
@@ -46,8 +44,6 @@ function initPassport () {
       })
     }
   ))
-
-  passport.authenticationMiddleware = authenticationMiddleware
 }
 
 module.exports = initPassport

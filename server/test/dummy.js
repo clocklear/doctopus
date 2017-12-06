@@ -1,25 +1,25 @@
 process.env.NODE_ENV = 'test';
 
-var chai = require('chai');
-var chaiHttp = require('chai-http');
-var path = require('path');
-var app = require(path.join('..', 'app.js'));
-var should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const path = require('path');
+const app = require(path.join('..', 'app.js'));
+const should = chai.should();
 
 chai.use(chaiHttp);
 
-var server;
+let server;
 
-describe('Dummy', function() {
-    before(function (done) {
+describe('Dummy', () => {
+    before(done => {
       server = app.listen(3001, done);
     });
 
-    after(function (done) {
+    after(done => {
       server.close(done);
     });
 
-    it('should equal true', function() {
+    it('should equal true', () => {
       true.should.equal(true);
     });
 });
