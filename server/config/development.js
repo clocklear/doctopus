@@ -1,6 +1,3 @@
-const path = require("path");
-const DiskAdapter = require("sails-disk");
-
 module.exports = {
   session: {
     secret: "SuperDevelopmentSecret!"
@@ -8,4 +5,4 @@ module.exports = {
   redis: {
     url: "redis://localhost"
   }
-};
+}

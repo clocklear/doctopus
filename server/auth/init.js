@@ -1,13 +1,11 @@
-const passport = require('passport');
-const bcrypt = require('bcrypt');
-const LocalStrategy = require('passport-local').Strategy;
-
-const authenticationMiddleware = require('./middleware');
-const path = require('path');
-const orm = require(path.join('..', 'models'));
+const passport = require("passport")
+const bcrypt = require("bcrypt")
+const LocalStrategy = require("passport-local").Strategy
+const path = require("path")
+const orm = require(path.join("..", "models"))
 
 function findUser (username, callback) {
-  orm.models.user.findOne({userName: username}).exec((err, user) => callback(err, user));
+  orm.models.user.findOne({userName: username}).exec((err, user) => callback(err, user))
 }
 
 passport.serializeUser((user, cb) => {

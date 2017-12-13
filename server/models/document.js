@@ -1,11 +1,7 @@
 module.exports = Waterline => Waterline.Collection.extend({
   connection: "default",
   identity: "document",
-  primaryKey: "documentId",
   attributes: {
-    documentId: {
-      type: "number"
-    },
     filePath: {
       type: "string",
       required: true
