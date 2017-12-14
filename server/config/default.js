@@ -1,4 +1,5 @@
 const DiskAdapter = require("sails-disk");
+const path = require("path");
 
 module.exports = {
   session: {
@@ -17,5 +18,8 @@ module.exports = {
         inMemoryOnly: true
       }
     }
+  },
+  storage: {
+    document: ""
   }
 };

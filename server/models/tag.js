@@ -1,7 +1,6 @@
 module.exports = Waterline => Waterline.Collection.extend({
   connection: "default",
   identity: "tag",
-  primaryKey: "tagId",
   attributes: {
     tagName: {
       type: "string",
@@ -13,4 +12,4 @@ module.exports = Waterline => Waterline.Collection.extend({
       via: "tags"
     }
   }
-});
+})

@@ -14,4 +14,4 @@ module.exports = Waterline => Waterline.Collection.extend({
       required: true
     }
   }
-});
+})
