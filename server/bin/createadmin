@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var path = require("path")
+var orm = require(path.join("..", "models"))
+var inquirer = require("inquirer")
+var bcrypt = require("bcrypt")
+
+var saltRounds = 15
+
+console.log("This script allows you to create an admin user for doctopus, or update the password for an existing admin user.")
+
+// Ask for password
+inquirer.prompt([
+  {
+    type: "password",
+    message: "Enter desired password",
+    name: "password"
+  }
+]).then(answers => {
+  var salt = bcrypt.genSaltSync(saltRounds)
+  var hashedPass = bcrypt.hashSync(answers.password, salt)
+
+  var criteria = {
+    userName: "admin"
+  }
+  var updatedAdmin = {
+    userName: "admin",
+    passHash: hashedPass
+  }
+
+  // Find admin user
+  orm.models.user.findOrCreate(criteria, updatedAdmin).exec(function (err, user) {
+    if (err) return console.error(err.message)
+    orm.models.user.update(criteria, updatedAdmin).exec(function (err, user) {
+      if (err) return console.error(err.message)
+      console.log("Admin user created or updated")
+    })
+  })
+})

@@ -1,0 +1,45 @@
+{
+  "name": "doctopus-server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=dev DEBUG=doctopus* && node ./bin/www",
+    "test": "mocha --timeout 10000",
+    "createadmin": "node ./bin/createadmin"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "~1.18.2",
+    "config": "^1.28.1",
+    "connect-redis": "^3.3.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-session": "^1.15.6",
+    "inquirer": "^4.0.1",
+    "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sails-disk": "^0.10.10",
+    "serve-favicon": "~2.4.5",
+    "uuid": "^3.1.0",
+    "waterline": "^0.11.11"
+  },
+  "main": "app.js",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "eslint": "^4.13.1",
+    "mocha": "^4.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/clocklear/doctopus.git"
+  },
+  "author": "Cory Locklear <corylocklear@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/clocklear/doctopus/issues"
+  },
+  "homepage": "https://github.com/clocklear/doctopus#readme"
+}
