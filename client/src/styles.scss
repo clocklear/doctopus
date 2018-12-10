@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$doctopus-primary: mat-palette($mat-light-blue);
+$doctopus-accent: mat-palette($mat-indigo);
+
+$doctopus-warn: mat-palette($mat-red);
+
+$doctopus-theme: mat-light-theme($doctopus-primary, $doctopus-accent, $doctopus-warn);
+
+@include angular-material-theme($doctopus-theme);

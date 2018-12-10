@@ -57,5 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
+
+# Vim
+*.swp
+*.swo
+
 server/.tmp
 server/.storage

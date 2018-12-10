@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+	<button mat-icon-button (click)="sidenav.toggle()">
+		<mat-icon>menu</mat-icon>
+	</button>
+	<span class="fill-space"></span>
+	<h1>Doctopus</h1>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-sidenav-container">
+	<mat-sidenav #sidenav class="app-sidenav">
+		<mat-nav-list>
+			<mat-list-item (click)="sidenav.close()">
+				<a routerLink='/scan'>
+					<mat-icon>scanner</mat-icon>Scan
+				</a>
+			</mat-list-item>
+
+			<mat-list-item (click)="sidenav.close()">
+				<a routerLink='/find'>
+					<mat-icon>search</mat-icon>Find
+				</a>
+			</mat-list-item>
+		</mat-nav-list>
+	</mat-sidenav>
+	
+	<router-outlet></router-outlet>
+</mat-sidenav-container>
+
